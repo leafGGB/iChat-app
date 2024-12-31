@@ -1,0 +1,310 @@
+<template>
+    <view>
+        <live-pusher
+			id='livePusher'
+			ref="livePusher"
+			class="livePusher"
+			:url="url"
+			:style="{width:windowW+'px',height:windowH+'px'}"
+			mode="SD"
+			:muted="false"
+			:enable-camera="true" 
+			:auto-focus="true" 
+			:beauty="3" 
+			whiteness="3"
+			aspect="9:16" 
+			@statechange="statechange" 
+			@netstatus="netstatus" 
+			@error = "error"
+        ></live-pusher>
+		<view class="bg">
+			<image src="../../static/image/live/topbg.png" class="bg-top" :style="{width:windowW+'px'}"></image>
+			<image src="../../static/image/live/btbg.png" class="bg-bottom" :style="{width:windowW+'px'}"></image>
+		</view>
+		<view class="top-title" :style="{width:windowW+'px',top:statusBarH+'px'}">
+			<image src="../../static/image/live/colses.png" class="closs-img"></image>
+			<text class="title">{{title}}</text>
+			<!-- <text class="timer" v-if="liveStyle == 2 || liveStyle == 5" @click="timess()">{{timer}}</text> -->
+		</view>
+		<view>
+			<view class="user" :style="{width:windowW+'px',top:statusBarH+84+'px'}">
+				<!-- <image :src="'../../static/images/'+base.fimg+'.png'" class="user-img"></image> -->
+				<image src="../../static/image/index/R-C.png" class="user-img"></image>
+				<text class="user-name">kk</text>
+			</view>
+			<view class="btns" :style="{width:windowW+'px',bottom:bottomH+46+'px'}">
+				<view class="btn" @click="cancelLive(min)">
+					<view class="btn-r cancel">
+						<image src="../../static/image/live/phone.png" class="cancel-img"></image>
+					</view>
+					<text class="btn-name">取消</text>
+				</view>
+				<view class="btn" @click="changeState(3)">
+					<view class="btn-r voice">
+						<image src="../../static/image/live/yuyin.png" class="voice-img"></image>
+					</view>
+					<text class="btn-name">切到语音通话</text>
+				</view>
+			</view>
+		</view>
+        <!-- <button class="btn" @click="start">开始推流</button>
+        <button class="btn" @click="pause">暂停推流</button>
+        <button class="btn" @click="resume">resume</button>
+        <button class="btn" @click="stop">停止推流</button>
+        <button class="btn" @click="snapshot">快照</button>
+        <button class="btn" @click="startPreview">开启摄像头预览</button>
+        <button class="btn" @click="stopPreview">关闭摄像头预览</button>
+        <button class="btn" @click="switchCamera">切换摄像头</button> -->
+    </view>
+</template>
+
+<script>
+    export default {
+        data() {
+			return {
+				url: 'rtmp://192.168.3.15/live/AN',
+				windowW:'',			//设备宽度
+				windowH:'',			//设备高度
+				statusBarH:'',		//状态栏高度
+				bottomH:'',				//底部安全距离
+				title: '电话拨打中...',  // 顶部提示
+			}
+        },
+        onReady() {
+            // 注意：需要在onReady中 或 onLoad 延时
+            this.context = uni.createLivePusherContext("livePusher", this);
+        },
+		onLoad(e) {
+			// this.gainInformation(e);
+			this.getPhoneStyle();
+			// console.log(this.url)
+			// this.liveCancel();
+			// this.liveing();
+			// this.changeVoice();
+		},
+        methods: {
+			//获取设备信息
+			getPhoneStyle(){
+				uni.getSystemInfo({
+				    success: (res) => {
+						this.windowH = res.screenHeight;
+						this.windowW = res.screenWidth;
+						this.statusBarH = res.statusBarHeight;
+						this.bottomH = res.screenHeight - res.safeArea.bottom;
+						// console.log(this.bottomH)
+				  //       console.log(res.model);
+				  //       console.log(res.pixelRatio);
+				  //       console.log(res.windowWidth);
+				  //       console.log(res.windowHeight);
+				  //       console.log(res.language);
+				  //       console.log(res.version);
+				  //       console.log(res.platform);
+				    }
+				});
+			},
+			
+            statechange(e) {
+                console.log("statechange:" + JSON.stringify(e));
+            },
+            netstatus(e) {
+                console.log("netstatus:" + JSON.stringify(e));
+            },
+            error(e) {
+                console.log("error:" + JSON.stringify(e));
+            },
+            start: function() {
+                this.context.start({
+                    success: (a) => {
+                        console.log("livePusher.start:" + JSON.stringify(a));
+                    },
+					fail: (err) => {
+						console.log(err)
+					}
+                });
+            },
+            close: function() {
+                this.context.close({
+                    success: (a) => {
+                        console.log("livePusher.close:" + JSON.stringify(a));
+                    }
+                });
+            },
+            snapshot: function() {
+                this.context.snapshot({
+                    success: (e) => {
+                        console.log(JSON.stringify(e));
+                    }
+                });
+            },
+            resume: function() {
+                this.context.resume({
+                    success: (a) => {
+                        console.log("livePusher.resume:" + JSON.stringify(a));
+                    }
+                });
+            },
+            pause: function() {
+                this.context.pause({
+                    success: (a) => {
+                        console.log("livePusher.pause:" + JSON.stringify(a));
+                    }
+                });
+            },
+            stop: function() {
+                this.context.stop({
+                    success: (a) => {
+                        console.log(JSON.stringify(a));
+                    }
+                });
+            },
+            switchCamera: function() {
+                this.context.switchCamera({
+                    success: (a) => {
+                        console.log("livePusher.switchCamera:" + JSON.stringify(a));
+                    }
+                });
+            },
+            startPreview: function() {
+                this.context.startPreview({
+                    success: (a) => {
+                        console.log("livePusher.startPreview:" + JSON.stringify(a));
+                    }
+                });
+            },
+            stopPreview: function() {
+                this.context.stopPreview({
+                    success: (a) => {
+                        console.log("livePusher.stopPreview:" + JSON.stringify(a));
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+
+
+<style>
+.live-video{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.livePusher{
+	background-color: #eee;
+	/* position: fixed;
+	border-radius: 12rpx; */
+}
+.bg-top{
+	height: 336rpx;
+	width: 200rpx;
+	position: fixed;
+	top: 0;
+	padding: 0;
+	margin: 0;
+}
+.bg-bottom{
+	height: 336rpx;
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	bottom: 0;
+}
+.top-title{
+	height: 88rpx;
+	position: fixed;
+	left: 0;
+}
+.closs-img{
+	height: 56rpx;
+	width: 56rpx;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 48rpx;
+	top: 16rpx;
+}
+.title{
+	text-align: center;
+	opacity: 0.6;
+	font-size: 32rpx;
+	color: #FFFFFF;
+	line-height: 88rpx;
+}
+.timer{
+	text-align: center;
+	font-size: 32rpx;
+	color: #FFFFFF;
+	line-height: 88rpx;
+}
+.user{
+	position: fixed;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+.user-img{
+	padding: 0;
+	margin: 0;
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+}
+.user-img-bag{
+	padding: 0;
+	margin: 0;
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 50%;
+}
+.user-name{
+	padding-top: 24rpx;
+	font-size: 40rpx;
+	color: #fff;
+}
+.btns{
+	position: fixed;
+	flex-direction:row;
+	justify-content:space-around;
+	padding: 66rpx;
+}
+.btn{
+	width: 180rpx;
+	align-items:center;
+	justify-content:center;
+}
+.btn-r{
+	align-items:center;
+	justify-content:center;
+	width: 140rpx;
+	height: 140rpx;
+	border-radius: 50%;
+}
+.cancel{
+	background-color: #FF5D5B;
+}
+.cancel-img{
+	padding: 0;
+	margin: 0;
+	width: 92rpx;
+	height: 92rpx;
+}
+.voice{
+	background-color: rgba(0,0,0,0.3);
+}
+.voice-img{
+	padding: 0;
+	margin: 0;
+	width: 70rpx;
+	height: 50rpx;
+}
+.live{
+	background: #30C74D;
+}
+.btn-name{
+	padding-top: 20rpx;
+	font-size: 28rpx;
+	color: #FFFFFF;
+}
+
+</style>

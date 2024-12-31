@@ -1,0 +1,153 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "navigationBarTitleText": "uni-app",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		}
+	    ,{
+            "path" : "pages/signin/signin",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "ssss",
+                // "enablePullDownRefresh": false
+				"navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/signup/signup",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+				"navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/userHome/userHome",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/userDetails/userDetails",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/friendRequest/friendRequest",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/chatRoom/chatRoom",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+            }
+            
+        },
+        {
+        	"path" : "pages/text/text",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false
+        	}
+        },
+        {
+        	"path" : "pages/group/group",
+        	"style" : 
+        	{
+				// "navigationBarTitleText": "",
+                // "enablePullDownRefresh": false
+                "navigationStyle": "custom"
+        	}
+        },
+        {
+        	"path" : "pages/groupChat/groupChat",
+        	"style" : 
+        	{
+        		// "navigationBarTitleText": "",
+        		// "enablePullDownRefresh": false,
+        		"navigationStyle": "custom"
+        	}
+        },
+        {
+        	"path" : "pages/groupMemberAdmin/groupMemberAdmin",
+        	"style" : 
+        	{
+        		// "navigationBarTitleText": "",
+        		// "enablePullDownRefresh": false,
+        		"navigationStyle": "custom"
+        	}
+        },
+        {
+        	"path" : "pages/invitePage/invitePage",
+        	"style" : 
+        	{
+        		// "navigationBarTitleText": "",
+        		// "enablePullDownRefresh": false,
+        		"navigationStyle": "custom"
+        	}
+        },
+        {
+        	"path" : "pages/live/live",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false,
+				"navigationStyle": "custom"
+        	}
+        },
+		{
+			"path" : "pages/live/livePlay",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"app-plus": {
+		"softinputMode": "adjustResize"
+	}
+}

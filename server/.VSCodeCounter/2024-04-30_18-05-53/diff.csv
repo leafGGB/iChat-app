@@ -1,0 +1,15 @@
+"filename", "language", "JavaScript", "comment", "blank", "total"
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\dao\bcrypt.js", "JavaScript", -10, -5, -6, -21
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\dao\dbserver.js", "JavaScript", -1002, -249, -122, -1373
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\dao\emailServer.js", "JavaScript", -26, -7, -4, -37
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\dao\live.js", "JavaScript", -18, 0, -3, -21
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\dao\socket.js", "JavaScript", -37, -17, -9, -63
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\chat.js", "JavaScript", 5, 2, 3, 10
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\friend.js", "JavaScript", 13, 3, 4, 20
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\group.js", "JavaScript", 37, 10, 10, 57
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\homePage.js", "JavaScript", 33, 12, 8, 53
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\search.js", "JavaScript", 19, 5, 5, 29
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\signIn.js", "JavaScript", 12, 4, 3, 19
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\signUp.js", "JavaScript", 14, 6, 6, 26
+"e:\前端开发\6. 小程序\uniapp\1. 基础\server\server\userDetail.js", "JavaScript", 17, 6, 5, 28
+"Total", "-", -943, -230, -100, -1273
